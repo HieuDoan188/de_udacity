@@ -1,0 +1,53 @@
+{
+	"name": "Pipeline Agg data flow",
+	"properties": {
+		"activities": [
+			{
+				"name": "Agg Data Flow",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "AggDataFlow",
+						"type": "DataFlowReference",
+						"parameters": {
+							"dataflow_param_fiscalyear": {
+								"value": "@pipeline().parameters.param_fiscalyear",
+								"type": "Expression"
+							}
+						}
+					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "blob1",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "dirstaging"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"parameters": {
+			"param_fiscalyear": {
+				"type": "int",
+				"defaultValue": 2021
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-11-21T09:41:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

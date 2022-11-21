@@ -1,0 +1,9 @@
+{
+	"name": "udacityadf-hieu",
+	"location": "southeastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ff807849-5378-4779-b642-005885681bce",
+		"tenantId": "9b7cbd77-6d6b-4879-8aba-63d7dfb18472"
+	}
+}
